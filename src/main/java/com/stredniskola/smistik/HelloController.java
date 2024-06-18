@@ -1,5 +1,7 @@
 package com.stredniskola.smistik;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -32,6 +34,13 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        slider.valueProperty().addListener(new ChangeListener<Number>() {
 
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                predni.setRadius((Double) newValue);
+                zadni.setRadius((Double) newValue);
+            }
+        });
     }
 }
